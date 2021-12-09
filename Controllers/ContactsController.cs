@@ -57,7 +57,7 @@ namespace AddressBookMVC.Controllers
 		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create([Bind("FirstName,LastName,Address1,Address2,City,State,Zip,Email,Phone,Created,ImageData,ImageType,ImageFile,Id")] Contact contact)
+		public async Task<IActionResult> Create([Bind("FirstName,LastName,Address1,Address2,City,State,Zip,Email,Phone,Created,ImageFile,ImageData,ImageType,Id")] Contact contact)
 		{
 			if (ModelState.IsValid)
 			{
@@ -67,6 +67,7 @@ namespace AddressBookMVC.Controllers
 					contact.ImageType = contact.ImageFile.ContentType;
 				}
 
+				contact.Created = DateTime.Now;
 				_context.Add(contact);
 				await _context.SaveChangesAsync();
 				return RedirectToAction(nameof(Index));

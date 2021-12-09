@@ -34,9 +34,9 @@ namespace AddressBookMVC.Models
 		public DateTime Created { get; set; }
 
 		[NotMapped]
-		[Display(Name = "Image")]
 		[DataType(DataType.Upload)]
 		public IFormFile ImageFile { get; set; }
+		[Display(Name = "Image")]
 		public byte[] ImageData { get; set; }
 		public string ImageType { get; set; }
 
